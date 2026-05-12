@@ -1,35 +1,27 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage.js';
+
+let loginPage;
+
+test.beforeEach(async ({ page }) => {
+  loginPage = new LoginPage(page);
+  await loginPage.goto();
+});
 
 test('login com sucesso', async ({ page }) => {
-    await page.goto('https://practicetestautomation.com/practice-test-login/');
-    await page.waitForLoadState('networkidle');
+  await loginPage.login('student', 'Password123');
 
-    await page.getByLabel('Username').fill('student');
-    await page.getByLabel('Password').fill('Password123');
-    await page.getByRole('button', { name: 'Submit'}).click();
-
-    await expect(page.getByText('Congratulations student. You successfully logged in!')).toBeVisible();
+  await expect(page.getByText('Congratulations student. You successfully logged in!')).toBeVisible();
 });
 
-test('login com usuário inválido', async ({ page }) => {
-    await page.goto('https://practicetestautomation.com/practice-test-login/');
-    await page.waitForLoadState('networkidle');
-    
-    await page.locator('#username').fill('usuario_errado');
-    await page.locator('#password').fill('Password123');
-    await page.locator('#submit').click();
+test('login com usuário inválido', async () => {
+  await loginPage.login('usuario_errado', 'Password123');
 
-    await expect(page.locator('#error')).toHaveText('Your username is invalid!');
+  await expect(await loginPage.getErrorMessage()).toHaveText('Your username is invalid!');
 });
 
-test('login com senha inválida', async ({ page }) => {
-  await page.goto('https://practicetestautomation.com/practice-test-login/');
-  await page.waitForLoadState('networkidle');
+test('login com senha inválida', async () => {
+  await loginPage.login('student', 'senha_errada');
 
-  await page.locator('#username').fill('student');
-  await page.locator('#password').fill('senha_errada');
-  await page.locator('#submit').click();
-
-  await expect(page.locator('#error')).toHaveText('Your password is invalid!');
+  await expect(await loginPage.getErrorMessage()).toHaveText('Your password is invalid!');
 });
-
