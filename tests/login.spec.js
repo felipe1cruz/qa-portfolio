@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { description, label, severity, step } from 'allure-js-commons';
+import { description, label, severity, step, attachment } from 'allure-js-commons';
 import { LoginPage } from '../pages/LoginPage.js';
 
 let loginPage;
@@ -12,10 +12,13 @@ test.beforeEach(async ({ page }) => {
 test('login com sucesso', async ({ page }) => {
   description('Usuário com credenciais válidas acessa o dashboard e vê mensagem de boas-vindas.');
   label('feature', 'Autenticação');
+  label('tag', '@smoke');
+  label('tag', '@regression');
   severity('critical');
 
   await step('Realizar login com credenciais válidas', async () => {
     await loginPage.login('student', 'Password123');
+    await attachment('screenshot', await page.screenshot(), 'image/png');
   });
 
   await step('Validar mensagem de boas-vindas', async () => {
@@ -33,7 +36,8 @@ test('login com usuário inválido', async () => {
   });
 
   await step('Validar mensagem de erro', async () => {
-    await expect(await loginPage.getErrorMessage()).toHaveText('Your username is invalid!');
+    const errorMessage = await loginPage.getErrorMessage();
+    await expect(errorMessage).toHaveText('Your username is invalid!');
   });
 });
 
@@ -47,6 +51,7 @@ test('login com senha inválida', async () => {
   });
 
   await step('Validar mensagem de erro', async () => {
-    await expect(await loginPage.getErrorMessage()).toHaveText('Your password is invalid!');
+    const errorMessage = await loginPage.getErrorMessage()
+    await expect(errorMessage).toHaveText('Your password is invalid!');
   });
 });

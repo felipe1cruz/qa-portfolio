@@ -68,6 +68,8 @@ test('GET - recurso não encontrado', async ({ request }) => {
 test('GET - listar todos os posts', async ({ request }) => {
   description('Lista todos os posts e valida que a resposta não está vazia.');
   label('feature', 'API de posts');
+  label('tag', '@smoke');
+  label('tag', '@regression');
   severity('normal');
 
   const response = await step('Fazer GET /posts', async () => {
