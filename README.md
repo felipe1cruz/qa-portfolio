@@ -43,8 +43,8 @@ Testes de API REST contra a JSONPlaceholder API, cobrindo os principais métodos
 
 ## 📊 Relatórios com Allure
 
-Os testes são instrumentados com [Allure Report](https://allurereport.org), gerando
-relatórios visuais com steps detalhados, severidade, feature, e anexos de resposta de API.
+Os testes são instrumentados com Allure Report, gerando relatórios visuais com
+steps detalhados, severidade, feature, e anexos de resposta de API.Acesse o relatório ao vivo: https://felipe1cruz.github.io/qa-portfolio/
 
 ```bash
 # Rodar testes e abrir relatório completo
@@ -88,7 +88,15 @@ npm run allure:report
 
 Os testes rodam automaticamente no **GitHub Actions** a cada push na branch `main`.
 
+Características do pipeline:
+Instalação de dependências e cache de browsers
+Execução de testes em paralelo (Chromium e Firefox no CI)
+Geração automática do Allure Report
+Deploy do relatório para GitHub Pages
+Compatibilidade: 3 browsers (Chromium, Firefox e WebKit)Ver histórico de workflows: https://github.com/felipe1cruz/qa-portfolio/actions
+
 ---
+
 
 ## 📫 Contato
 
