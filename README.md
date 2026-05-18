@@ -1,6 +1,6 @@
 # 🎭 QA Portfolio — Felipe Cruz
 ![Playwright Tests](https://github.com/felipe1cruz/qa-portfolio/actions/workflows/playwright.yml/badge.svg)
-
+<a href="https://github.com/felipe1cruz/qa-portfolio"><img src="https://img.shields.io/github/last-commit/felipe1cruz/qa-portfolio?color=blue&label=%C3%BAltimo%20commit" alt="último commit"></a> <a href="https://github.com/felipe1cruz/qa-portfolio"><img src="https://img.shields.io/github/repo-size/felipe1cruz/qa-portfolio?color=blue&label=tamanho" alt="tamanho"></a> <a href="https://github.com/felipe1cruz/qa-portfolio"><img src="https://img.shields.io/github/languages/top/felipe1cruz/qa-portfolio?color=blue&label=linguagem" alt="linguagem"></a> <a href="https://playwright.dev"><img src="https://img.shields.io/badge/Made%20with-Playwright-45ba4b?logo=Playwright&logoColor=white" alt="Playwright"></a> <a href="https://github.com/felipe1cruz/qa-portfolio"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" alt="PRs welcome"></a> <a href="https://nodejs.org"><img src="https://img.shields.io/badge/Node.js-18.x-339933?logo=node.js&logoColor=white" alt="Node.js"></a>
 Portfólio de testes automatizados desenvolvido com **Playwright** e **JavaScript**,
 com pipeline CI/CD integrado ao GitHub Actions e relatórios visuais com Allure Report.
 
